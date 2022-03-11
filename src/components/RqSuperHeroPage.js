@@ -4,11 +4,22 @@ import { useQuery } from "react-query";
 
 const RqSuperHeroPage = () => {
   const { isLoading, data, isError, error } =
-    useQuery("superheroes", () => {
-      return axios.get(
-        "http://localhost:4000/superheros1"
-      );
-    });
+    useQuery(
+      "superheroes",
+      () => {
+        return axios.get(
+          "http://localhost:4000/superheros"
+        );
+      },
+      {
+        //react-query default cache time is 5mins
+        //when query is fetch data and cache data 5 min until uncache
+        //when the user redirect to the page again within 5mins it will show the cache data
+        //it will not set loading to true but is fetch in background if data change it will update the data but it work in background
+        //we can change the cachetime by adding third parameter in useQuery options
+        cacheTime: 5000,
+      }
+    );
   if (isLoading) {
     return <h3>Loading...</h3>;
   }
