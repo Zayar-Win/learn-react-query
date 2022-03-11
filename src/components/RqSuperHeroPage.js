@@ -18,6 +18,7 @@ const RqSuperHeroPage = () => {
         //it will not set loading to true but is fetch in background if data change it will update the data but it work in background
         //we can change the cachetime by adding third parameter in useQuery options
         cacheTime: 5000,
+        staleTime: 5000,
       }
     );
   if (isLoading) {
