@@ -1,6 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { useSuperHeros } from "../hooks/useSuperHeros";
 
 const RqSuperHeroPage = () => {
   //u can also update the data in the third parameter options called select
@@ -13,24 +12,7 @@ const RqSuperHeroPage = () => {
     isFetching,
     error,
     refetch,
-  } = useQuery(
-    "superheroes",
-    () => {
-      return axios.get(
-        "http://localhost:4000/superheros"
-      );
-    },
-    {
-      select: (data) => {
-        //this function automatically receive the data parameter that is the data from api fetch
-        //this function will update the data that return from useQuery
-        const heroNames = data.data.map(
-          (hero) => hero.name
-        );
-        return heroNames;
-      },
-    }
-  );
+  } = useSuperHeros();
   if (isLoading || isFetching) {
     return <h3>Loading...</h3>;
   }
