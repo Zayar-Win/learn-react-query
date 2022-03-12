@@ -30,7 +30,14 @@ const RqSuperHeroPage = () => {
         //when we set to true it will fetch the data when window on focus it mean when we change the data
         //it will directly update the data
         //when we set to false it will update the component when refresh the page;
-        refetchOnWindowFocus: false,
+        // refetchOnWindowFocus: false,
+        //we can set the refetchInterval value by miliseconds.every 2s it mean it set refetchInterval to 2000ms
+        //the query will fetch the data.so it is very useful for data polling in background.
+        //one thing to notice it will fetch the data when the windown is onFocus
+        //if you want to fecth the data util the window isn't on focus you can use  refetchIntervalInBackground
+        //by setting to true it will fetch the data every 2s
+        refetchInterval: 2000,
+        refetchIntervalInBackground: true,
       }
     );
   if (isLoading) {
