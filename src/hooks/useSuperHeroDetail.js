@@ -11,6 +11,6 @@ const fetchDetail = ({ queryKey }) => {
 export const useSuperHeroDetail = (heroId) => {
   return useQuery(
     ["super-hero", heroId],
-    fetchDetail
+    fetchDetail //this functin automaticlly accept unique key || useQuery's first parameter as it parameter
   );
 };
