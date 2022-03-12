@@ -1,8 +1,23 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 const RqSuperHeroPage = () => {
+  const [isRefetch, setIsRefetch] =
+    useState(true);
+  //sometime u need to do some side effect after fetching the data in this case useQuery accept
+  //in the third parameter called onSuccess and onError it will do when the data fetch success or when the error occur
+
+  const onSuccess = (data) => {
+    if (data.data.length === 4) {
+      setIsRefetch(false);
+    }
+  };
+
+  const onError = (error) => {
+    console.log("encounter after on error");
+  };
+
   const {
     isLoading,
     data,
@@ -18,13 +33,11 @@ const RqSuperHeroPage = () => {
       );
     },
     {
-      //if you want to fetch the data depending on user click the first thing you need to do
-      //is to set the option in third parameter enabled to false by doing this is will not fetch
-      //the data when the component first mount.
-      //the next thing you need to do is to fetch the data when user click on button
-      //the fetch the data when the user click you need the function to fetch the data
-      //for this useQuery will return a functin call refetch you can use this function by listing click event on button
-      enabled: false,
+      onSuccess, //in the third parameter we can get the option call on Success and onError they will run after fetch data
+      refetchInterval: isRefetch
+        ? 3000
+        : isRefetch, //this is set the refetchInterval value depending on data
+      onError,
     }
   );
   if (isLoading || isFetching) {
