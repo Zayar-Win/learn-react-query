@@ -3,20 +3,8 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 const RqSuperHeroPage = () => {
-  const [isRefetch, setIsRefetch] =
-    useState(true);
-  //sometime u need to do some side effect after fetching the data in this case useQuery accept
-  //in the third parameter called onSuccess and onError it will do when the data fetch success or when the error occur
-
-  const onSuccess = (data) => {
-    if (data.data.length === 4) {
-      setIsRefetch(false);
-    }
-  };
-
-  const onError = (error) => {
-    console.log("encounter after on error");
-  };
+  //u can also update the data in the third parameter options called select
+  //it will update the data that return from the useQuery.
 
   const {
     isLoading,
@@ -33,11 +21,14 @@ const RqSuperHeroPage = () => {
       );
     },
     {
-      onSuccess, //in the third parameter we can get the option call on Success and onError they will run after fetch data
-      refetchInterval: isRefetch
-        ? 3000
-        : isRefetch, //this is set the refetchInterval value depending on data
-      onError,
+      select: (data) => {
+        //this function automatically receive the data parameter that is the data from api fetch
+        //this function will update the data that return from useQuery
+        const heroNames = data.data.map(
+          (hero) => hero.name
+        );
+        return heroNames;
+      },
     }
   );
   if (isLoading || isFetching) {
@@ -53,8 +44,8 @@ const RqSuperHeroPage = () => {
       <button onClick={refetch}>
         Fetch heros
       </button>
-      {data?.data.map((hero) => (
-        <div key={hero.id}>{hero.hero}</div>
+      {data.map((hero) => (
+        <div key={hero}>{hero}</div>
       ))}
     </div>
   );
