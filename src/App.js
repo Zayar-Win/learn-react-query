@@ -13,6 +13,7 @@ import {
   QueryClient,
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import HeroDetails from "./components/HeroDetails";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,10 @@ const App = () => {
         </ul>
       </nav>
       <Routes>
+        <Route
+          path='/super-heros/:id'
+          element={<HeroDetails />}
+        ></Route>
         <Route
           path='/'
           element={<Home />}
