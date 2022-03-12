@@ -21,5 +21,14 @@
             "name" : "allthal"
         }
 
+    ],
+    "friends" : [
+        {
+            "id":1,
+            "name":"zawzawlin"
+        },{
+            "id":2,
+            "name":"something"
+        }
     ]
 }

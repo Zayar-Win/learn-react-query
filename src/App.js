@@ -14,6 +14,7 @@ import {
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import HeroDetails from "./components/HeroDetails";
+import ParallelQuery from "./components/ParallelQuery";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,10 @@ const App = () => {
         </ul>
       </nav>
       <Routes>
+        <Route
+          path='/parallel-query'
+          element={<ParallelQuery />}
+        />
         <Route
           path='/super-heros/:id'
           element={<HeroDetails />}
