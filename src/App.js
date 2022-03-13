@@ -17,6 +17,7 @@ import HeroDetails from "./components/HeroDetails";
 import ParallelQuery from "./components/ParallelQuery";
 import DynamicQueryParallel from "./components/DynamicQueryParallel";
 import Dependent from "./components/Dependent";
+import QueryPaginate from "./components/QueryPaginate";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,10 @@ const App = () => {
               herosId={[1, 3]}
             />
           }
+        />
+        <Route
+          path='/colors'
+          element={<QueryPaginate />}
         />
         <Route
           path='/dependent-queries'

@@ -42,5 +42,31 @@
             "id":"zayarwin",
             "coures":["react","vue","angular"]
         }
+    ],
+    "colors":[
+        {
+            "id":"1",
+            "color":"red"
+        },
+        {
+            "id":"2",
+            "color":"green"
+        },
+        {
+            "id":"3",
+            "color":"yellow"
+        },
+        {
+            "id":"4",
+            "color":"brown"
+        },
+        {
+            "id":"5",
+            "color":"pink"
+        },
+        {
+            "id":"6",
+            "color":"black"
+        }
     ]
 }
