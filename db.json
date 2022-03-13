@@ -30,5 +30,17 @@
             "id":2,
             "name":"something"
         }
+    ],
+    "user" : [
+        {
+            "id":"zayarwin@gmail.com",
+            "channelId":"zayarwin"
+        }
+    ],
+    "channel":[
+        {
+            "id":"zayarwin",
+            "coures":["react","vue","angular"]
+        }
     ]
 }

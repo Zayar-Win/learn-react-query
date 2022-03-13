@@ -16,6 +16,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import HeroDetails from "./components/HeroDetails";
 import ParallelQuery from "./components/ParallelQuery";
 import DynamicQueryParallel from "./components/DynamicQueryParallel";
+import Dependent from "./components/Dependent";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,14 @@ const App = () => {
           element={
             <DynamicQueryParallel
               herosId={[1, 3]}
+            />
+          }
+        />
+        <Route
+          path='/dependent-queries'
+          element={
+            <Dependent
+              email={"zayarwin@gmail.com"}
             />
           }
         />
